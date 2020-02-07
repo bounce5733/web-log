@@ -27,7 +27,7 @@ public class LogAction {
     @GetMapping("/refresh/{level}")
     public ResponseEntity<Object> refresh(@PathVariable("level") String level) {
         LoggerContext loggerContext = (LoggerContext) LoggerFactory.getILoggerFactory();
-        Logger logger = loggerContext.getLogger("com.jyh.log");
+        Logger logger = loggerContext.getLogger(Const.CUSTOM_LOG_NAME);
         logger.setLevel(Level.valueOf(level));
         return new ResponseEntity<Object>(HttpStatus.OK);
     }

@@ -28,7 +28,7 @@ public class LogSocketServer {
             log.info("启动日志接收器socket...");
             ServerSocket ss = null;
             try {
-                ss = new ServerSocket(6666, 50, InetAddress.getByName("127.0.0.1"));
+                ss = new ServerSocket(Const.SOCKET_PORT, 50, InetAddress.getByName(Const.SOCKET_IP));
                 for (; ; ) {
                     Socket sock = ss.accept();
                     log.info("connected from " + sock.getRemoteSocketAddress());

@@ -79,7 +79,7 @@ public class LogAppender extends UnsynchronizedAppenderBase<ILoggingEvent> {
         if (logSocket == null) {
             System.out.println("启动WebLogger Socket客户端");
             try {
-                logSocket = new Socket("127.0.0.1", 6666);
+                logSocket = new Socket(Const.SOCKET_IP, Const.SOCKET_PORT);
             } catch (IOException e) {
                 System.out.println("WebLogger Socket客户端启动失败！");
                 e.printStackTrace();
