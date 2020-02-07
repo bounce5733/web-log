@@ -12,4 +12,4 @@
 
   springboot项目，直接启动，访问地址http://localhost:8080
   
-  ![](web_log.png)
+  ![](./web_log.png)
