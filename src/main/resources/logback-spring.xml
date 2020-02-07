@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <shutdownHook class="ch.qos.logback.core.hook.DelayingShutdownHook"/>
+
+    <appender name="CONSOLE"
+              class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} %X{X-B3-TraceId:-} %X{X-B3-SpanId:-}
+                [%thread] %-5level %logger : %msg%n
+            </pattern>
+        </encoder>
+    </appender>
+
+    <appender name="MYLOG"
+              class="com.jyh.log.LogAppender">
+
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <!-- 日志收集最低日志级别 -->
+            <level>INFO</level>
+        </filter>
+        <layout
+                class="ch.qos.logback.classic.PatternLayout">
+            <!--格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符 -->
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n</pattern>
+        </layout>
+    </appender>
+
+    <logger name="com.jyh.log" level="OFF" additivity="false">
+        <appender-ref ref="MYLOG"/>
+    </logger>
+    <root level="INFO">
+        <appender-ref ref="CONSOLE"/>
+    </root>
+</configuration>
