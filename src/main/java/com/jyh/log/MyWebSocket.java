@@ -54,10 +54,10 @@ public class MyWebSocket {
 
     @OnClose
     public void onClose(Session session) {
-        SESSIONS.remove(session);
-        log.info("连接ID[" + session.getId() + "]关闭，当前在线连接数为：" + SESSIONS.size());
         try {
             session.close();
+            SESSIONS.remove(session);
+            log.info("连接ID[" + session.getId() + "]关闭，当前在线连接数为：" + SESSIONS.size());
         } catch (IOException e) {
             log.error("关闭连接出错！", e);
         }
